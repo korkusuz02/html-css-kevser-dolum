@@ -1,0 +1,428 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Kevser Dolum</title>
+	<meta name="keywords" content="../">
+	<meta name="description" content="../">
+	<meta name="author" content="Emre Korkusuz">
+	<meta name="classification" content="web tasarım">
+	<meta name="googlebot" content="All, Index, Follow" />
+	<meta name="Robots" content="All, Index, Follow" />
+	<meta name="revisit-after" content="7 days">
+	<meta name="rating" content="General" />
+	<meta name="expires" content="no" />
+	<meta name="language" content="turkish, TR" />
+	<meta name="distribution" content="Global" />
+	<meta name="googlebot" content="NOODP" />
+	<meta name="robots" content="all" />
+	<meta name="robots" content="follow" />
+	<meta name="robots" content="index" />
+	<meta name="distribution" content="global" />
+	<meta name="revisit-after" content="1 Day" />
+    <meta name=”viewport” content=”width=device-width, initial-scale=1″>
+
+	<!-- ============ Styles ============ -->
+	<link rel="stylesheet" href="assets/styles/reset.css" type="text/css" />
+	<link rel="stylesheet" href="assets/styles/custom.css" type="text/css" />
+	<link rel="stylesheet" href="assets/font/font.css" type="text/css" />
+
+	<!-- ============ Font-Awesome ============ -->
+	<link rel="stylesheet" href="assets/styles/font-awesome.css" type="text/css" />
+
+	<!-- ============ Mobil CSS ============ -->
+	<link rel="stylesheet" href="assets/mobile/media-queries.css" type="text/css" />
+
+	<!-- ============ Google Font ============ -->
+
+	<!-- ============ Fav-Icon ============ -->
+	<link rel="Shortcut Icon" href="assets/images/icons/fav_icon.png" type="image/x-icon">
+    
+    <!-- Scripts -->
+	<script type="text/javascript" src="assets/scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/scripts/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="assets/scripts/custom.js"></script>
+
+
+    <!-- Add jQuery assetsrary -->
+	<script type="text/javascript" src="assets/scripts/jquery-1.10.1.min.js"></script>
+
+	<!-- Add mousewheel plugin (this is optional) -->
+	<script type="text/javascript" src="assets/scripts/jquery.mousewheel-3.0.6.pack.js"></script>
+
+	<!-- Add fancyBox main JS and CSS files -->
+	<script type="text/javascript" src="assets/source/jquery.fancybox.js?v=2.1.5"></script>
+	<link rel="stylesheet" type="text/css" href="assets/source/jquery.fancybox.css?v=2.1.5" media="screen" />
+
+	<!-- Add Button helper (this is optional) -->
+	<link rel="stylesheet" type="text/css" href="assets/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" />
+	<script type="text/javascript" src="assets/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+
+	<!-- Add Thumbnail helper (this is optional) -->
+	<link rel="stylesheet" type="text/css" href="assets/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
+	<style type="text/css">
+	body,td,th {
+	color: #FF0000;
+}
+    </style>
+	<script type="text/javascript" src="assets/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+	<!-- Add Media helper (this is optional) -->
+	<script type="text/javascript" src="assets/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+			 *  Simple image gallery. Uses default settings
+			 */
+
+			$('.fancybox').fancybox();
+
+			/*
+			 *  Different effects
+			 */
+
+			// Change title type, overlay closing speed
+			$(".fancybox-effects-a").fancybox({
+				helpers: {
+					title : {
+						type : 'outside'
+					},
+					overlay : {
+						speedOut : 0
+					}
+				}
+			});
+
+			// Disable opening and closing animations, change title type
+			$(".fancybox-effects-b").fancybox({
+				openEffect  : 'none',
+				closeEffect	: 'none',
+
+				helpers : {
+					title : {
+						type : 'over'
+					}
+				}
+			});
+
+			// Set custom style, close if clicked, change title type and overlay color
+			$(".fancybox-effects-c").fancybox({
+				wrapCSS    : 'fancybox-custom',
+				closeClick : true,
+
+				openEffect : 'none',
+
+				helpers : {
+					title : {
+						type : 'inside'
+					},
+					overlay : {
+						css : {
+							'background' : 'rgba(238,238,238,0.85)'
+						}
+					}
+				}
+			});
+
+			// Remove padding, set opening and closing animations, close if clicked and disable overlay
+			$(".fancybox-effects-d").fancybox({
+				padding: 0,
+
+				openEffect : 'elastic',
+				openSpeed  : 150,
+
+				closeEffect : 'elastic',
+				closeSpeed  : 150,
+
+				closeClick : true,
+
+				helpers : {
+					overlay : null
+				}
+			});
+
+			/*
+			 *  Button helper. Disable animations, hide close button, change title type and content
+			 */
+
+			$('.fancybox-buttons').fancybox({
+				openEffect  : 'none',
+				closeEffect : 'none',
+
+				prevEffect : 'none',
+				nextEffect : 'none',
+
+				closeBtn  : false,
+
+				helpers : {
+					title : {
+						type : 'inside'
+					},
+					buttons	: {}
+				},
+
+				afterLoad : function() {
+					this.title = 'Image ' + (this.index + 1) + ' of ' + this.group.length + (this.title ? ' - ' + this.title : '');
+				}
+			});
+
+
+			/*
+			 *  Thumbnail helper. Disable animations, hide close button, arrows and slide to next gallery item if clicked
+			 */
+
+			$('.fancybox-thumbs').fancybox({
+				prevEffect : 'none',
+				nextEffect : 'none',
+
+				closeBtn  : false,
+				arrows    : false,
+				nextClick : true,
+
+				helpers : {
+					thumbs : {
+						width  : 50,
+						height : 50
+					}
+				}
+			});
+
+			/*
+			 *  Media helper. Group items, disable animations, hide arrows, enable media and button helpers.
+			*/
+			$('.fancybox-media')
+				.attr('rel', 'media-gallery')
+				.fancybox({
+					openEffect : 'none',
+					closeEffect : 'none',
+					prevEffect : 'none',
+					nextEffect : 'none',
+
+					arrows : false,
+					helpers : {
+						media : {},
+						buttons : {}
+					}
+				});
+
+			/*
+			 *  Open manually
+			 */
+
+			$("#fancybox-manual-a").click(function() {
+				$.fancybox.open('1_b.jpg');
+			});
+
+			$("#fancybox-manual-b").click(function() {
+				$.fancybox.open({
+					href : 'iframe.html',
+					type : 'iframe',
+					padding : 5
+				});
+			});
+
+			$("#fancybox-manual-c").click(function() {
+				$.fancybox.open([
+					{
+						href : '1_b.jpg',
+						title : 'My title'
+					}, {
+						href : '2_b.jpg',
+						title : '2nd title'
+					}, {
+						href : '3_b.jpg'
+					}
+				], {
+					helpers : {
+						thumbs : {
+							width: 75,
+							height: 50
+						}
+					}
+				});
+			});
+
+
+		});
+	</script>
+
+	<!-- ============ Simple image gallery ============ -->
+	<!-- <a class="fancybox" href="1_b.jpg" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="1_s.jpg" alt="" /></a> -->
+
+	<!-- ============ Different effects ============ -->
+	<!-- <a class="fancybox-effects-a" href="5_b.jpg" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit"><img src="5_s.jpg" alt="" /></a> -->
+
+</head>
+<body text="#FF0000" >
+
+<!-- top_bg -->
+<div class="top_bg">
+	<!-- ortala -->
+	<div class="ortala">
+		<!-- logo --><!-- logo -->
+
+
+		<!-- top_menu -->
+		<div class="top_menu">
+			<ul>
+				<li><a href="">Müşteri Hizmetleri</a></li>
+				<li><span>|</span></li>
+				<li><a href="">Mobil</a></li>
+				<li><span>|</span></li>
+				<li><a href="iletisim.html">İletişim</a></li>
+			</ul>
+		</div><!-- top_menu -->
+
+		<!-- social_box -->
+		<img src="assets/images/logo.png" width="100" height="50" alt="../" />
+		<div class="social_box">
+			<ul>
+				<li>						   <a href='http://www.facebook.com/share.php?u=http://www.kevserdolum.com' target="_blank"><img src="assets/images/fb.png" width="34" height="34" alt="../" /></a></li>
+				<li>						   <a href="https://twitter.com/" target="_blank"><img src="assets/images/tw.png" width="34" height="34" alt="../" /></a></li>
+				<li style="margin-right: 0px;"><a href="https://plus.google.com/" target="_blank"><img src="assets/images/gm.png" width="34" height="34" alt="../" /></a></li>
+			</ul>
+		</div><!-- social_box -->
+
+		<div class="clear"></div>
+
+		<!-- menu -->
+		<div class="menu">
+			<ul>
+				<li><a href="anasayfa.html">ANASAYFA</a></li>
+				<li><a href="hakkimizda.html">HAKKIMIZDA</a></li>
+				<li>
+					<a href="urunlerimiz.html">ÜRÜNLERİMİZ</a>
+					
+			  </li>
+				<li><a href="referanslar.html">REFERANSLARIMIZ</a></li>
+				<li><a href="iletisim.html">İLETİŞİM</a></li>
+			</ul>
+			<a href="iletisim.html" class="menu_contact_bg">
+				<h6>Bize Ulaşın</h6>
+				<h1>0536 728 1902</h1>
+			</a>
+		</div><!-- menu -->
+		<div class="menu_shadow"></div>
+	</div><!-- ortala -->
+</div><!-- top_bg -->
+<!-- ============ include / header.html ============ -->
+
+<!-- red_bg -->
+<div class="red_bg">
+	<!-- ortala -->
+	<div class="ortala">
+		<!-- slider_generic -->
+		<div class="slider_generic">
+			<!-- slider -->
+			<div class="slider">
+				<ul>
+					<li><a href=""><img src="assets/images/slider.jpg" width="959" height="263" alt="../" /></a></li>
+					<li><a href=""><img src="assets/images/slider2.jpg" width="959" height="263" alt="../" /></a></li>
+					<li><a href=""><img src="assets/images/slider3.jpg" width="959" height="263" alt="../" /></a></li>
+				</ul>
+			</div><!-- slider -->
+
+			<!-- slider_swap -->
+			<div class="slider_swap">
+				<ul>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div><!-- slider_swap -->
+		</div><!-- slider_generic -->
+		<div class="slider_generic_shadow"></div>
+	</div><!-- ortala -->
+</div><!-- red_bg -->
+
+<!-- ortala -->
+<div class="ortala">
+	<!-- p_generic -->
+	<div class="p_generic">
+		<!-- p1_box -->
+		<div class="p1_box">
+			<h1>HAKKIMIZDA</h1> <div class="clear"></div>
+			<a class="fancybox" href="assets/images/hakkimizda.png" data-fancybox-group="gallery" title="HAKKIMIZDA">
+				<img src="assets/images/hakkimizda.png" alt="" />
+			</a>
+			<h1 ><strong>SIRT VE GIDIK TÜYÜ DOLGUSUNUN ŞİŞME KAPASİTESİ</strong></font></h1>
+              <br>
+         <h2> 75/25 oranında dolgulu bu şişme mont için, sırt ve gıdık tüylerinin şişme kapasitesi 540 inç küp veya üzeridir. Şişme kapasitesi, kuş tüyünün havayı «hapsederek » ısı yalıtımını sağlama kapasitesini temsil eder. Yani kuş tüyü ne kadar çok şişerse, o kadar çok yer kaplayacak ve havayı hapsederek o kadar çok yalıtım sağlayacaktır.</h2>
+		</div><!-- p1_box -->
+
+		<!-- p2_box -->
+		<div class="p2_box">
+			<h1>AÇIK RENKLERLE İLGİLİ NOT</font></h1><div class="clear"></div>
+			<h2>X-Light şişme montun kumaşı, şişme montun hafiflik ve az yer kaplama özelliklerine katkı sağlayacak şekilde incedir. Açık gri ve sarı renkli ürünlerimizde, şişme montun kuş tüyü dolgusunun hafifçe görünür olabileceğini unutmayın.</h2>
+			
+	  </div><!-- p2_box -->
+
+		<!-- p2_box -->
+		<div class="p2_box" style="float: right">
+			<h1>YAĞMUR YAĞMASI DURUMUNDA)</font></h1> <div class="clear"></div>
+			<h2>Bu ürün su tutmayan malzemeden üretilmiştir. Su montun içine sızmaz ve kumaşın üzerinden kayar. Size de yağmurdan kaçıp güvenli bir yere geçmeniz için yeterli süreyi tanır. Ancak, şişme mont su geçirmez değildir. Uzun süre yağışa maruz kalmanız halinde montun üzerine yağmurluk giymeniz önerilir.</h2>
+			
+	  </div><!-- p2_box -->
+	</div><!-- p_generic -->
+
+	<!-- p_generic_r -->
+	<div class="p_generic_r">
+		<!-- p3_box -->
+		<div class="p3_box">
+			<h1>Hizmetlerimiz</h1>
+            
+			<ul>
+            <li></li>
+				<li><a>Kaz Tüyü</a>
+				  
+				</li>
+				
+
+                
+				
+			  <li><a>Sırt Tüyü</a></li>
+			  
+			  
+				<li><a>Boncuk Elyaf</a>
+				  
+			  </li>
+				<li><a>Microgel</a></li>
+                <li></li><li></li>
+
+
+
+				
+			</ul>
+		</div><!-- p3_box -->
+
+		<!-- p3_box -->
+		<div class="p3_box" style="background: transparent; margin-top: 20px">
+			<h1>Kategoriler</h1>
+			<ul>
+				<li><span></span><a>Mont</a></li>
+				<li><span></span><a>Yelek</a></li>
+				<li><span></span><a>Yastık</a></li>
+				<li><span></span><a>Oyuncak Dolumu</a></li>
+				<li><span></span><a>Terlik Dolumu</a></li>
+			</ul>
+		</div><!-- p3_box -->
+	</div><!-- p_generic_r -->
+
+	<div class="clear"></div>
+</div><!-- ortala -->
+
+<!-- ============ include / footer.html ============ -->
+<!-- footer_bg -->
+<div class="footer_bg">
+	<!-- ortala -->
+	<div class="ortala">
+		<div class="footer">
+			<h1>Copyright © 2017</h1>
+			
+		</div>
+	</div><!-- ortala -->
+</div><!-- footer_bg -->
+
+</body>
+</html>
